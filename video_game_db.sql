@@ -1,0 +1,145 @@
+-- Group 9: Fantastic Four
+-- CS3743 Database Systems
+-- Database: video_game_db
+
+CREATE DATABASE IF NOT EXISTS video_game_db;
+USE video_game_db;
+
+-- users
+CREATE TABLE IF NOT EXISTS users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_name VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    phone_number VARCHAR(15),
+    date_of_birth DATE NOT NULL
+);
+
+-- initialize table not dependent on other tables
+-- genre
+CREATE TABLE IF NOT EXISTS genre (
+    genre_id INT PRIMARY KEY AUTO_INCREMENT,
+    genre_name VARCHAR(100) UNIQUE NOT NULL
+);
+
+-- publisher
+CREATE TABLE IF NOT EXISTS publisher (
+    publisher_id INT PRIMARY KEY AUTO_INCREMENT,
+    publisher_name VARCHAR(100) NOT NULL,
+    date_established DATE
+);
+
+-- developer
+CREATE TABLE IF NOT EXISTS developer (
+    developer_id INT PRIMARY KEY AUTO_INCREMENT,
+    developer_name VARCHAR(100) NOT NULL
+);
+
+-- franchise
+CREATE TABLE IF NOT EXISTS franchise (
+    franchise_id INT PRIMARY KEY AUTO_INCREMENT,
+    franchise_name VARCHAR(50) NOT NULL,
+    establish_date DATE,
+    latest_release VARCHAR(100) UNIQUE
+);
+
+-- platform
+CREATE TABLE IF NOT EXISTS platform (
+    platform_id INT PRIMARY KEY AUTO_INCREMENT,
+    platform_name VARCHAR(50) NOT NULL,
+    game_release_date DATE
+);
+
+-- initialize tables w/ FK
+-- games
+CREATE TABLE IF NOT EXISTS games (
+    game_id INT PRIMARY KEY AUTO_INCREMENT,
+    game_name VARCHAR(100) NOT NULL,
+    game_description TEXT,
+    multiplayer BOOLEAN DEFAULT FALSE,
+    price DECIMAL(10,2) NOT NULL CHECK (price >= 0.00),
+    age_rating VARCHAR(100) NOT NULL,
+    created_date DATE,
+    genre_id INT NOT NULL,
+    developer_id INT NOT NULL,
+    franchise_id INT,
+    publisher_id INT NOT NULL,
+    FOREIGN KEY (genre_id) REFERENCES genre(genre_id),
+    FOREIGN KEY (developer_id) REFERENCES developer(developer_id),
+    FOREIGN KEY (franchise_id) REFERENCES franchise(franchise_id),
+    FOREIGN KEY (publisher_id) REFERENCES publisher(publisher_id)
+);
+
+-- user_following (self referencing)
+CREATE TABLE IF NOT EXISTS user_following (
+    user_id1 INT NOT NULL,  -- follower
+    user_id2 INT NOT NULL,  -- being followed
+    PRIMARY KEY (user_id1, user_id2),
+    FOREIGN KEY (user_id1) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id2) REFERENCES users(user_id) ON DELETE CASCADE,
+    CHECK (user_id1 <> user_id2)
+);
+
+-- user_games
+CREATE TABLE IF NOT EXISTS user_games (
+    user_games_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    game_id INT NOT NULL,
+    following_date DATE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (game_id) REFERENCES games(game_id)
+);
+
+-- user_reviews
+CREATE TABLE IF NOT EXISTS user_reviews (
+    user_reviews_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_games_id INT UNIQUE NOT NULL,
+    rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
+    review_comment TEXT CHECK (
+        CHAR_LENGTH(review_comment) BETWEEN 20 AND 2000
+    ),
+    review_date DATE NOT NULL,
+    FOREIGN KEY (user_games_id) REFERENCES user_games(user_games_id) ON DELETE CASCADE
+);
+
+-- awards
+CREATE TABLE IF NOT EXISTS awards (
+    award_id INT PRIMARY KEY AUTO_INCREMENT,
+    award_name VARCHAR(100) NOT NULL,
+    date_awarded DATE,
+    awarded_by VARCHAR(100),
+    game_id INT,
+    FOREIGN KEY (game_id) REFERENCES games(game_id)
+);
+
+-- game_genre 
+CREATE TABLE IF NOT EXISTS game_genre (
+    game_id INT NOT NULL,
+    genre_id INT NOT NULL,
+    PRIMARY KEY (game_id, genre_id),
+    FOREIGN KEY (game_id) REFERENCES games(game_id),
+    FOREIGN KEY (genre_id) REFERENCES genre(genre_id)
+);
+
+-- game_platform
+CREATE TABLE IF NOT EXISTS game_platform (
+    game_id INT NOT NULL,
+    platform_id INT NOT NULL,
+    PRIMARY KEY (game_id, platform_id),
+    FOREIGN KEY (game_id) REFERENCES games(game_id),
+    FOREIGN KEY (platform_id) REFERENCES platform(platform_id)
+);
+
+-- game_franchise
+CREATE TABLE IF NOT EXISTS game_franchise (
+    game_id INT NOT NULL,
+    franchise_id INT NOT NULL,
+    PRIMARY KEY (game_id, franchise_id),
+    FOREIGN KEY (game_id) REFERENCES games(game_id),
+    FOREIGN KEY (franchise_id) REFERENCES franchise(franchise_id)
+);
+
+-- all tables initialized 
+
+-- DROP DATABASE video_game_db;
