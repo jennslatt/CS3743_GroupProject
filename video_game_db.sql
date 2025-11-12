@@ -92,16 +92,18 @@ CREATE TABLE IF NOT EXISTS user_games (
 );
 
 -- user_reviews
-CREATE TABLE IF NOT EXISTS user_reviews (
+CREATE TABLE user_reviews (
     user_reviews_id INT PRIMARY KEY AUTO_INCREMENT,
-    user_games_id INT UNIQUE NOT NULL,
+    user_id INT NOT NULL,
+    game_id INT NOT NULL,
     rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
-    review_comment TEXT CHECK (
-        CHAR_LENGTH(review_comment) BETWEEN 20 AND 2000
-    ),
+    review_comment TEXT CHECK (CHAR_LENGTH(review_comment) BETWEEN 20 AND 2000),
     review_date DATE NOT NULL,
-    FOREIGN KEY (user_games_id) REFERENCES user_games(user_games_id) ON DELETE CASCADE
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (game_id) REFERENCES games(game_id) ON DELETE CASCADE,
+    UNIQUE (user_id, game_id)  -- prevent duplicate reviews per user/game
 );
+
 
 -- awards
 CREATE TABLE IF NOT EXISTS awards (
@@ -143,3 +145,14 @@ CREATE TABLE IF NOT EXISTS game_franchise (
 -- all tables initialized 
 
 -- DROP DATABASE video_game_db;
+
+/*
+TRIGGER EXAMPLES:
+	BEFORE INSERT: validate users date of birth is valid, not over 100 or under 13?
+	BEFORE INSERT: validate user age meets age requirements for game user is wanting to add to their account
+    BEFORE INSERT: validate user doesnt already follow other user
+    BEFORE INSERT: validate user hasn't already reviewed game if wanting to review again
+    AFTER UPDATE: update users review date to CURRDATE if they update their review
+    BEFORE INSERT: validate developer != user so they can't review their own game (idk if we really need this)
+    BEFORE INSERT: validate user has base game befofre they are able to add expansion pack to account
+/*
