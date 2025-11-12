@@ -155,4 +155,66 @@ TRIGGER EXAMPLES:
     AFTER UPDATE: update users review date to CURRDATE if they update their review
     BEFORE INSERT: validate developer != user so they can't review their own game (idk if we really need this)
     BEFORE INSERT: validate user has base game befofre they are able to add expansion pack to account
-/*
+*/
+
+-- TRIGGERS 
+
+DELIMITER //
+
+CREATE TRIGGER validate_user_age
+BEFORE INSERT ON users
+FOR EACH ROW
+BEGIN
+	DECLARE age INT;
+    SET age = TIMESTAMPDIFF(YEAR, NEW.date_of_birth, CURDATE());
+    
+    IF age < 13 THEN
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'User must atleast be 13 years old.';
+	ELSEIF age > 100 THEN
+		SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'User cannot be older than 100 and touch a video game no shot';
+	END IF;
+END;
+//
+
+DELIMITER ;
+
+DELIMITER //
+
+CREATE TRIGGER validate_user_age_update
+BEFORE UPDATE ON users
+FOR EACH ROW
+BEGIN
+	DECLARE age INT;
+    SET age = TIMESTAMPDIFF(YEAR, NEW.date_of_birth, CURDATE());
+    
+    IF age < 13 THEN
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'User must atleast be 13 years old.';
+	ELSEIF age > 100 THEN
+		SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'User cannot be older than 100 and touch a video game no shot';
+	END IF;
+END;
+//
+
+DELIMITER ;
+
+
+-- INSERT TRIGGER AND UPDATE TRIGGER TESTS
+SHOW TRIGGERS; 
+
+INSERT INTO users (user_name, email, first_name, last_name, date_of_birth)
+VALUES ('Too young test', 'young@class.com', 'Too', 'Young', '2020-02-03');
+
+INSERT INTO users (user_name, email, first_name, last_name, date_of_birth)
+VALUES ('Too old test', 'old@class.com', 'Too', 'Old', '1920-02-03');
+
+UPDATE users
+SET date_of_birth = '2020-01-01'
+WHERE user_id = 1;
+
+UPDATE users
+SET date_of_birth = '1900-01-01'
+WHERE user_id = 2;
