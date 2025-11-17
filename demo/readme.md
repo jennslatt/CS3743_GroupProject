@@ -67,16 +67,6 @@ streamlit run app.py
 
 * **Interactive Results** - View query results in real-time
 
-## For Team Members
-
-### If You Need to Modify Data:
-
-Edit `create_parquet_data.py` and re-run it to regenerate the parquet files.
-
-### If You Want to Add New Queries:
-
-Add them to the `NORMALIZED_QUERIES` dictionary in `app.py`.
-
 ### Accessing the App:
 
 After running `streamlit run app.py`, open your browser to the URL shown in terminal (usually `http://localhost:8501`)
