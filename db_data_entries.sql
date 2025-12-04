@@ -3,23 +3,26 @@
 USE video_game_db;
 
 -- USERS (15)
-INSERT INTO users (user_name, email, first_name, last_name, phone_number, date_of_birth)
+INSERT INTO users (user_name, email, password_hash, first_name, last_name, phone_number, date_of_birth)
 VALUES
-('luna_gamer', 'luna@example.com', 'Luna', 'Morales', '2105551123', '1998-06-14'), -- pk = 1 than auto increments
-('ryan_playz', 'ryan@example.com', 'Ryan', 'Johnson', '5125552222', '2002-01-08'),
-('shadowwolf', 'wolf@example.com', 'Alex', 'Carter', '8325553344', '1996-09-19'),
-('pixie_dust', 'pixie@example.com', 'Chloe', 'Nguyen', '2145558899', '2005-04-22'),
-('dragonlord', 'dragon@example.com', 'Mark', 'Bennett', '7375555522', '1990-11-30'),
-('techiejay', 'jay@example.com', 'Jay', 'Patel', '4695559001', '2001-02-05'),
-('marieplays', 'marie@example.com', 'Marie', 'Lopez', '2815556677', '1997-10-25'),
-('xenofox', 'fox@example.com', 'Theo', 'Reed', '9155558888', '2003-08-15'),
-('katcoder', 'kat@example.com', 'Katherine', 'Li', '2105559900', '2004-05-09'),
-('icebear', 'bear@example.com', 'Jacob', 'Miller', '6825553333', '1999-03-14'),
-('neo_77', 'neo@example.com', 'Neal', 'Peters', '3255550001', '1995-12-05'),
-('skygazer', 'sky@example.com', 'Amelia', 'Woods', '4325554444', '2002-06-19'),
-('mecha_mike', 'mike@example.com', 'Michael', 'Kim', '7135552233', '1989-09-09'),
-('arcadia', 'arcadia@example.com', 'Aria', 'Singh', '2105555566', '2000-11-03'),
-('bladequeen', 'blade@example.com', 'Elena', 'Gonzalez', '7375557788', '1993-07-28');
+('luna_gamer','luna@example.com','hash_luna','Luna','Morales','2105551123','1998-06-14'), -- users have fake/default hashes
+('ryan_playz','ryan@example.com','hash_ryan','Ryan','Johnson','5125552222','2002-01-08'),
+('shadowwolf','wolf@example.com','hash_shadow','Alex','Carter','8325553344','1996-09-19'),
+('pixie_dust','pixie@example.com','hash_pixie','Chloe','Nguyen','2145558899','2005-04-22'),
+('dragonlord','dragon@example.com','hash_dragon','Mark','Bennett','7375555522','1990-11-30'),
+('techiejay','jay@example.com','hash_jay','Jay','Patel','4695559001','2001-02-05'),
+('marieplays','marie@example.com','hash_marie','Marie','Lopez','2815556677','1997-10-25'),
+('xenofox','fox@example.com','hash_xeno','Theo','Reed','9155558888','2003-08-15'),
+('katcoder','kat@example.com','hash_kat','Katherine','Li','2105559900','2004-05-09'),
+('icebear','bear@example.com','hash_bear','Jacob','Miller','6825553333','1999-03-14'),
+('neo_77','neo@example.com','hash_neo','Neal','Peters','3255550001','1995-12-05'),
+('skygazer','sky@example.com','hash_sky','Amelia','Woods','4325554444','2002-06-19'),
+('mecha_mike','mike@example.com','hash_mike','Michael','Kim','7135552233','1989-09-09'),
+('arcadia','arcadia@example.com','hash_arcadia','Aria','Singh','2105555566','2000-11-03'),
+('bladequeen','blade@example.com','hash_blade','Elena','Gonzalez','7375557788','1993-07-28'),
+('admin','admin@admin.com','$2b$10$xAL9lDMA1UD5O5zqzysazOOgkVYt188/MYV/PR4ghW4SMawJjvaT2','admin','admin',NULL,'2000-01-01'); -- admin login, can login with
+
+
 
 -- GENRES (10)
 INSERT INTO genre (genre_name) VALUES

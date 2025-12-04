@@ -10,6 +10,7 @@ CREATE TABLE IF NOT EXISTS users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     user_name VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     phone_number VARCHAR(15),
@@ -142,17 +143,5 @@ CREATE TABLE IF NOT EXISTS game_franchise (
     FOREIGN KEY (franchise_id) REFERENCES franchise(franchise_id)
 );
 
--- all tables initialized 
-
 -- DROP DATABASE video_game_db;
-
-/*
-TRIGGER EXAMPLES:
-	BEFORE INSERT: validate users date of birth is valid, not over 100 or under 13?
-	BEFORE INSERT: validate user age meets age requirements for game user is wanting to add to their account
-    BEFORE INSERT: validate user doesnt already follow other user
-    BEFORE INSERT: validate user hasn't already reviewed game if wanting to review again
-    AFTER UPDATE: update users review date to CURRDATE if they update their review
-    BEFORE INSERT: validate developer != user so they can't review their own game (idk if we really need this)
-    BEFORE INSERT: validate user has base game befofre they are able to add expansion pack to account
-/*
+-- all tables initialized 
