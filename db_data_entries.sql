@@ -2,10 +2,10 @@
 
 USE video_game_db;
 
--- USERS (15)
+-- USERS (30)
 INSERT INTO users (user_name, email, password_hash, first_name, last_name, phone_number, date_of_birth)
 VALUES
-('luna_gamer','luna@example.com','hash_luna','Luna','Morales','2105551123','1998-06-14'), -- users have fake/default hashes
+('luna_gamer','luna@example.com','hash_luna','Luna','Morales','2105551123','1998-06-14'), -- fake hashes
 ('ryan_playz','ryan@example.com','hash_ryan','Ryan','Johnson','5125552222','2002-01-08'),
 ('shadowwolf','wolf@example.com','hash_shadow','Alex','Carter','8325553344','1996-09-19'),
 ('pixie_dust','pixie@example.com','hash_pixie','Chloe','Nguyen','2145558899','2005-04-22'),
@@ -20,11 +20,24 @@ VALUES
 ('mecha_mike','mike@example.com','hash_mike','Michael','Kim','7135552233','1989-09-09'),
 ('arcadia','arcadia@example.com','hash_arcadia','Aria','Singh','2105555566','2000-11-03'),
 ('bladequeen','blade@example.com','hash_blade','Elena','Gonzalez','7375557788','1993-07-28'),
-('admin','admin@admin.com','$2b$10$xAL9lDMA1UD5O5zqzysazOOgkVYt188/MYV/PR4ghW4SMawJjvaT2','admin','admin',NULL,'2000-01-01'); -- admin login, can login with
+('admin','admin@admin.com','$2b$10$xAL9lDMA1UD5O5zqzysazOOgkVYt188/MYV/PR4ghW4SMawJjvaT2','admin','admin',NULL,'2000-01-01'), -- can signin with this user
+('phoenix_rise','phoenix@example.com','hash_phoenix','Sofia','Martinez','2105551234','1994-08-17'),
+('cyber_sam','sam@example.com','hash_sam','Samuel','Chen','5125553456','2001-11-22'),
+('ninja_nat','nat@example.com','hash_nat','Natalie','Brown','8325554567','1998-03-30'),
+('cosmic_carl','carl@example.com','hash_carl','Carl','Davis','2145555678','2003-07-11'),
+('vortex_val','val@example.com','hash_val','Valerie','Wilson','7375556789','1996-12-04'),
+('storm_steve','steve@example.com','hash_steve','Steven','Anderson','4695557890','2000-05-19'),
+('lunar_lily','lily@example.com','hash_lily','Lily','Thomas','2815558901','1999-09-25'),
+('blaze_brad','brad@example.com','hash_brad','Bradley','Taylor','9155559012','2002-02-14'),
+('echo_emma','emma@example.com','hash_emma','Emma','Moore','2105550123','1997-06-08'),
+('shadow_sam','sams@example.com','hash_sams','Samantha','Jackson','6825551234','2004-10-31'),
+('titan_tom','tom@example.com','hash_tom','Thomas','White','3255552345','1995-04-27'),
+('nova_nick','nick@example.com','hash_nick','Nicholas','Harris','4325553456','2001-08-15'),
+('frost_frank','frank@example.com','hash_frank','Frank','Martin','7135554567','1992-01-20'),
+('jade_jess','jess@example.com','hash_jess','Jessica','Thompson','2105555678','2003-12-09');
 
 
-
--- GENRES (10)
+-- GENRES (24)
 INSERT INTO genre (genre_name) VALUES
 ('Action'),
 ('Adventure'),
@@ -35,9 +48,23 @@ INSERT INTO genre (genre_name) VALUES
 ('Strategy'),
 ('Puzzle'),
 ('Horror'),
-('Fighting');
+('Fighting'),
+('Racing'),
+('Platformer'),
+('Stealth'),
+('Survival'),
+('Battle Royale'),
+('MOBA'),
+('MMO'),
+('Roguelike'),
+('Tactical'),
+('Visual Novel'),
+('Rhythm'),
+('Tower Defense'),
+('Card Game'),
+('Party Game');
 
--- DEVELOPERS (10)
+-- DEVELOPERS (25)
 INSERT INTO developer (developer_name) VALUES
 ('Naughty Dog'),
 ('CD Projekt Red'),
@@ -48,9 +75,24 @@ INSERT INTO developer (developer_name) VALUES
 ('Insomniac Games'),
 ('Square Enix'),
 ('Bethesda'),
-('Valve');
+('Valve'),
+('Epic Games'),
+('Bungie'),
+('BioWare'),
+('Capcom'),
+('Kojima Productions'),
+('Respawn Entertainment'),
+('Riot Games'),
+('Blizzard Entertainment'),
+('343 Industries'),
+('Guerrilla Games'),
+('Santa Monica Studio'),
+('Mojang Studios'),
+('Team Cherry'),
+('Supergiant Games'),
+('ConcernedApe');
 
--- PUBLISHERS (10)
+-- PUBLISHERS (24)
 INSERT INTO publisher (publisher_name, date_established) VALUES
 ('Sony Interactive Entertainment', '1993-11-16'),
 ('Bandai Namco', '1955-06-01'),
@@ -61,9 +103,23 @@ INSERT INTO publisher (publisher_name, date_established) VALUES
 ('Take-Two Interactive', '1993-09-30'),
 ('Microsoft Studios', '2002-03-01'),
 ('Electronic Arts', '1982-05-28'),
-('Valve Corporation', '1996-08-24');
+('Valve Corporation', '1996-08-24'),
+('Activision Blizzard', '2008-07-09'),
+('Sega', '1960-06-03'),
+('Capcom Co., Ltd.', '1979-05-30'),
+('Konami', '1969-03-21'),
+('Warner Bros. Interactive', '2004-01-14'),
+('2K Games', '2005-01-25'),
+('Devolver Digital', '2009-06-01'),
+('Annapurna Interactive', '2016-01-01'),
+('Private Division', '2017-12-14'),
+('Focus Entertainment', '1996-01-01'),
+('THQ Nordic', '2011-11-23'),
+('505 Games', '2006-01-01'),
+('Team17', '1990-12-17'),
+('Humble Games', '2017-10-01');
 
--- FRANCHISES (8)
+-- FRANCHISES (24)
 INSERT INTO franchise (franchise_name, establish_date, latest_release) VALUES
 ('The Legend of Zelda', '1986-02-21', 'Tears of the Kingdom'),
 ('Grand Theft Auto', '1997-10-21', 'GTA V'),
@@ -72,9 +128,25 @@ INSERT INTO franchise (franchise_name, establish_date, latest_release) VALUES
 ('Final Fantasy', '1987-12-18', 'Final Fantasy XVI'),
 ('Dark Souls', '2011-09-22', 'Elden Ring'),
 ('Super Mario', '1985-09-13', 'Super Mario Odyssey'),
-('Half-Life', '1998-11-19', 'Half-Life Alyx');
+('Half-Life', '1998-11-19', 'Half-Life Alyx'),
+('Halo', '2001-11-15', 'Halo Infinite'),
+('God of War', '2005-03-22', 'God of War Ragnarök'),
+('Assassins Creed', '2007-11-13', 'Assassins Creed Mirage'),
+('Resident Evil', '1996-03-22', 'Resident Evil Village'),
+('The Witcher', '2007-10-26', 'The Witcher 3'),
+('Metroid', '1986-08-06', 'Metroid Dread'),
+('Pokemon', '1996-02-27', 'Pokemon Scarlet and Violet'),
+('Forza', '2005-05-03', 'Forza Motorsport'),
+('Uncharted', '2007-11-19', 'Uncharted 4'),
+('Metal Gear', '1987-07-13', 'Metal Gear Solid V'),
+('Destiny', '2014-09-09', 'Destiny 2'),
+('Borderlands', '2009-10-20', 'Borderlands 3'),
+('Far Cry', '2004-03-23', 'Far Cry 6'),
+('Battlefield', '2002-09-10', 'Battlefield 2042'),
+('Gears of War', '2006-11-07', 'Gears 5'),
+('Street Fighter', '1987-08-30', 'Street Fighter 6');
 
--- PLATFORMS (8)
+-- PLATFORMS (24)
 INSERT INTO platform (platform_name, game_release_date) VALUES
 ('PlayStation 5', NULL),
 ('Xbox Series X', NULL),
@@ -83,9 +155,25 @@ INSERT INTO platform (platform_name, game_release_date) VALUES
 ('Steam Deck', NULL),
 ('PlayStation 4', NULL),
 ('Xbox One', NULL),
-('Mobile', NULL);
+('Mobile', NULL),
+('PlayStation 3', NULL),
+('Xbox 360', NULL),
+('Wii U', NULL),
+('PlayStation 2', NULL),
+('Nintendo 3DS', NULL),
+('PS Vita', NULL),
+('GameCube', NULL),
+('Dreamcast', NULL),
+('Nintendo 64', NULL),
+('Sega Genesis', NULL),
+('Super Nintendo', NULL),
+('Game Boy Advance', NULL),
+('Nintendo DS', NULL),
+('PSP', NULL),
+('Wii', NULL),
+('Original Xbox', NULL);
 
--- GAMES (30)
+-- GAMES (50)
 INSERT INTO games (game_name, game_description, multiplayer, price, age_rating, created_date, genre_id, developer_id, franchise_id, publisher_id)
 VALUES
 ('The Last of Us Part II', 'A gripping narrative-driven action game.', FALSE, 59.99, 'Mature', '2020-06-19', 1, 1, NULL, 1),
@@ -117,9 +205,29 @@ VALUES
 ('FIFA 23', 'Soccer simulation with real teams.', TRUE, 59.99, 'Everyone', '2022-09-30', 6, 4, NULL, 9),
 ('Dark Souls III', 'Challenging RPG from FromSoftware.', TRUE, 59.99, 'Mature', '2016-04-12', 3, 3, 6, 2),
 ('GTA IV', 'Open-world crime drama in Liberty City.', TRUE, 29.99, 'Mature', '2008-04-29', 1, 6, 2, 7),
-('Super Smash Bros Ultimate', 'All-star fighting game crossover.', TRUE, 59.99, 'Everyone', '2018-12-07', 10, 5, 7, 3);
+('Super Smash Bros Ultimate', 'All-star fighting game crossover.', TRUE, 59.99, 'Everyone', '2018-12-07', 10, 5, 7, 3),
+('Fortnite', 'Battle royale with building mechanics.', TRUE, 0.00, 'Teen', '2017-07-25', 15, 11, NULL, 11),
+('Destiny 2', 'Sci-fi MMO shooter with raids.', TRUE, 0.00, 'Teen', '2017-09-06', 4, 12, 19, 11),
+('Mass Effect Legendary Edition', 'Remastered sci-fi RPG trilogy.', FALSE, 59.99, 'Mature', '2021-05-14', 3, 13, NULL, 9),
+('Monster Hunter Rise', 'Action RPG hunting game.', TRUE, 39.99, 'Teen', '2021-03-26', 3, 14, NULL, 13),
+('Death Stranding', 'Post-apocalyptic delivery simulation.', FALSE, 39.99, 'Mature', '2019-11-08', 2, 15, NULL, 1),
+('Apex Legends', 'Fast-paced battle royale shooter.', TRUE, 0.00, 'Teen', '2019-02-04', 15, 16, NULL, 9),
+('League of Legends', 'Competitive MOBA game.', TRUE, 0.00, 'Teen', '2009-10-27', 16, 17, NULL, 17),
+('World of Warcraft', 'Fantasy MMORPG.', TRUE, 14.99, 'Teen', '2004-11-23', 17, 18, NULL, 11),
+('Hollow Knight', 'Atmospheric metroidvania platformer.', FALSE, 14.99, 'Everyone', '2017-02-24', 12, 23, NULL, 23),
+('Bastion', 'Action RPG with narration.', FALSE, 14.99, 'Teen', '2011-07-20', 3, 24, NULL, 15),
+('Horizon Zero Dawn', 'Robot dinosaur hunting adventure.', FALSE, 49.99, 'Teen', '2017-02-28', 2, 20, NULL, 1),
+('Red Dead Redemption 2', 'Western open-world epic.', TRUE, 59.99, 'Mature', '2018-10-26', 1, 6, NULL, 7),
+('The Witcher 3', 'Fantasy RPG with rich narrative.', FALSE, 39.99, 'Mature', '2015-05-19', 3, 2, 13, 2),
+('Valorant', 'Tactical FPS with abilities.', TRUE, 0.00, 'Teen', '2020-06-02', 4, 17, NULL, 17),
+('Splatoon 3', 'Colorful ink-based shooter.', TRUE, 59.99, 'Everyone', '2022-09-09', 4, 5, NULL, 3),
+('Street Fighter 6', 'Fighting game with diverse roster.', TRUE, 59.99, 'Teen', '2023-06-02', 10, 14, 24, 13),
+('It Takes Two', 'Co-op adventure platformer.', TRUE, 39.99, 'Teen', '2021-03-26', 12, 9, NULL, 9),
+('Rust', 'Survival multiplayer sandbox.', TRUE, 39.99, 'Mature', '2018-02-08', 14, 4, NULL, 10),
+('Sea of Thieves', 'Pirate multiplayer adventure.', TRUE, 39.99, 'Teen', '2018-03-20', 2, 4, NULL, 8),
+('Among Us', 'Social deduction party game.', TRUE, 4.99, 'Everyone', '2018-06-15', 24, 4, NULL, 4);
 
--- GAME_PLATFORM
+-- GAME_PLATFORM (92)
 INSERT INTO game_platform (game_id, platform_id) VALUES
 (1, 1), (1, 4), -- The Last of Us Part II is available on PlayStation 5 and PC
 (2, 4),
@@ -150,79 +258,87 @@ INSERT INTO game_platform (game_id, platform_id) VALUES
 (27, 4),
 (28, 4),
 (29, 1), (29, 2),
-(30, 3);
+(30, 3),
+(31, 1), (31, 2), (31, 3), (31, 4), (31, 8),
+(32, 1), (32, 2), (32, 4),
+(33, 1), (33, 2), (33, 4),
+(34, 1), (34, 3), (34, 4),
+(35, 1), (35, 4),
+(36, 1), (36, 2), (36, 4),
+(37, 4),
+(38, 4),
+(39, 1), (39, 4), (39, 3),
+(40, 4),
+(41, 1), (41, 4),
+(42, 1), (42, 2), (42, 4),
+(43, 1), (43, 2), (43, 4),
+(44, 4),
+(45, 3),
+(46, 1), (46, 4),
+(47, 1), (47, 2), (47, 4),
+(48, 4),
+(49, 1), (49, 2), (49, 4),
+(50, 1), (50, 2), (50, 3), (50, 4), (50, 8);
 
--- GAME_GENRE
+-- GAME_GENRE (50)
 INSERT INTO game_genre (game_id, genre_id) VALUES
 (1, 1), (2, 3), (3, 3), (4, 2), (5, 2), (6, 1),
 (7, 1), (8, 3), (9, 3), (10, 4), (11, 4), (12, 8),
 (13, 5), (14, 5), (15, 9), (16, 1), (17, 5),
 (18, 6), (19, 2), (20, 1), (21, 4), (22, 2),
 (23, 3), (24, 5), (25, 4), (26, 8), (27, 6),
-(28, 3), (29, 1), (30, 10);
+(28, 3), (29, 1), (30, 10),
+(31, 15), (32, 4), (33, 3), (34, 3), (35, 2),
+(36, 15), (37, 16), (38, 17), (39, 12), (40, 3),
+(41, 2), (42, 1), (43, 3), (44, 4), (45, 4),
+(46, 10), (47, 12), (48, 14), (49, 2), (50, 24);
 
--- USER_FOLLOWING (25)
+-- USER_FOLLOWING (50)
 INSERT INTO user_following (user_id1, user_id2) VALUES
-(1, 2), (1, 3), (1, 5), -- luna follows Alex and Mark
-(2, 1), (2, 6),
-(3, 1), (3, 4), (3, 7),
-(4, 2), (4, 8),
-(5, 1), (5, 9), (5, 10),
-(6, 2), (6, 3), (6, 11),
-(7, 1), (7, 8),
-(8, 9), (8, 10),
-(9, 5), (9, 6),
-(10, 3), (10, 4),
-(11, 12), (12, 13),
-(13, 1), (14, 2),
-(15, 1);
+(1, 2), (1, 3), (1, 5), (2, 1), (2, 6),
+(3, 1), (3, 4), (3, 7), (4, 2), (4, 8),
+(5, 1), (5, 9), (5, 10), (6, 2), (6, 3), (6, 11),
+(7, 1), (7, 8), (8, 9), (8, 10),
+(9, 5), (9, 6), (10, 3), (10, 4),
+(11, 12), (12, 13), (13, 1), (14, 2), (15, 1),
+(16, 1), (16, 2), (17, 3), (17, 4), (18, 5),
+(19, 6), (19, 7), (20, 8), (21, 9), (21, 10),
+(22, 11), (22, 12), (23, 13), (24, 14), (24, 15),
+(25, 1), (26, 2), (27, 3), (28, 4), (29, 5),
+(30, 6);
 
 
--- USER_GAMES (40)
+-- USER_GAMES (60)
 INSERT INTO user_games (user_id, game_id, following_date)
 VALUES
-(1, 3, '2023-07-12'),   -- Luna follows Elden Ring, pk = 1
-(1, 8, '2024-01-03'),
-(1, 19, '2023-05-20'),
-(2, 6, '2024-03-05'),
-(2, 11, '2024-03-10'),
-(2, 18, '2023-11-11'),
-(3, 1, '2022-06-10'),
-(3, 3, '2023-04-02'),
-(3, 9, '2023-10-08'),
-(4, 5, '2023-05-15'),
-(4, 13, '2023-07-04'),
-(5, 6, '2022-11-30'),
-(5, 29, '2024-02-22'),
-(5, 30, '2024-03-10'),
-(6, 2, '2023-12-15'),
-(6, 3, '2023-12-18'),
-(6, 11, '2024-01-05'),
-(7, 7, '2023-04-20'),
-(7, 8, '2023-06-14'),
-(7, 22, '2024-02-10'),
-(8, 9, '2023-03-19'),
-(8, 10, '2023-04-01'),
-(8, 25, '2024-03-15'),
-(9, 4, '2024-02-18'),
-(9, 5, '2023-12-05'),
-(10, 6, '2023-08-22'),
-(10, 15, '2023-09-30'),
-(11, 10, '2023-06-20'),
-(11, 24, '2023-11-08'),
-(12, 12, '2023-10-10'),
-(12, 17, '2024-02-19'),
-(13, 18, '2023-07-14'),
-(13, 21, '2023-11-25'),
-(14, 2, '2023-08-08'),
-(14, 8, '2023-09-18'),
-(15, 23, '2023-12-01'),
-(15, 26, '2023-12-09'),
-(15, 9, '2024-02-20'),
-(10, 3, '2024-03-11'),
-(12, 6, '2023-09-14');
+(1, 3, '2023-07-12'), (1, 8, '2024-01-03'), (1, 19, '2023-05-20'),
+(2, 6, '2024-03-05'), (2, 11, '2024-03-10'), (2, 18, '2023-11-11'),
+(3, 1, '2022-06-10'), (3, 3, '2023-04-02'), (3, 9, '2023-10-08'),
+(4, 5, '2023-05-15'), (4, 13, '2023-07-04'),
+(5, 6, '2022-11-30'), (5, 29, '2024-02-22'), (5, 30, '2024-03-10'),
+(6, 2, '2023-12-15'), (6, 3, '2023-12-18'), (6, 11, '2024-01-05'),
+(7, 7, '2023-04-20'), (7, 8, '2023-06-14'), (7, 22, '2024-02-10'),
+(8, 9, '2023-03-19'), (8, 10, '2023-04-01'), (8, 25, '2024-03-15'),
+(9, 4, '2024-02-18'), (9, 5, '2023-12-05'),
+(10, 6, '2023-08-22'), (10, 15, '2023-09-30'),
+(11, 10, '2023-06-20'), (11, 24, '2023-11-08'),
+(12, 12, '2023-10-10'), (12, 17, '2024-02-19'),
+(13, 18, '2023-07-14'), (13, 21, '2023-11-25'),
+(14, 2, '2023-08-08'), (14, 8, '2023-09-18'),
+(15, 23, '2023-12-01'), (15, 26, '2023-12-09'), (15, 9, '2024-02-20'),
+(10, 3, '2024-03-11'), (12, 6, '2023-09-14'),
+(16, 31, '2024-01-15'), (16, 32, '2024-02-20'),
+(17, 33, '2023-09-10'), (17, 34, '2023-10-05'),
+(18, 35, '2024-03-01'), (19, 36, '2023-07-15'),
+(20, 37, '2023-08-20'), (21, 38, '2024-01-10'),
+(22, 39, '2023-11-05'), (23, 40, '2024-02-14'),
+(24, 41, '2023-06-30'), (25, 42, '2023-12-20'),
+(26, 43, '2024-03-05'), (27, 44, '2023-09-18'),
+(28, 45, '2023-10-25'), (29, 46, '2024-01-30'),
+(30, 47, '2023-11-12'), (16, 48, '2024-02-28'),
+(17, 49, '2023-08-05'), (18, 50, '2024-03-15');
 
--- USER_REVIEWS (20) Simplified version: uses user_id + game_id)
+-- USER_REVIEWS (38) Simplified version: uses user_id + game_id)
 INSERT INTO user_reviews (user_id, game_id, rating, review_comment, review_date)
 VALUES
 (1, 3, 5, 'Elden Ring is breathtaking and brutally challenging. The world feels alive.', '2023-08-01'), -- Luna - Elden Ring
@@ -244,9 +360,27 @@ VALUES
 (9, 22, 5, 'God of War Ragnarök is a masterpiece in design and emotion.', '2023-12-05'), -- Katherine - God of War Ragnarök
 (10, 15, 3, 'Resident Evil Village is spooky and cinematic, though linear.', '2023-11-11'), -- Jacob - Resident Evil Village
 (11, 23, 5, 'Final Fantasy VII Remake captures nostalgia perfectly.', '2023-05-01'), -- Neal - FFVII Remake
-(12, 24, 4, 'The Sims 4 is endlessly creative and fun.', '2024-03-15'); -- Amelia - The Sims 4
+(12, 24, 4, 'The Sims 4 is endlessly creative and fun.', '2024-03-15'), -- Amelia - The Sims 4
+(13, 31, 4, 'Fortnite is constantly evolving with fresh content and events.', '2024-01-20'),
+(14, 32, 5, 'Destiny 2 has some of the best gunplay and raids in gaming.', '2024-02-05'),
+(15, 33, 4, 'Mass Effect Legendary Edition brings back amazing memories.', '2024-01-12'),
+(16, 34, 5, 'Monster Hunter Rise is the perfect portable hunting experience.', '2023-10-18'),
+(17, 35, 3, 'Death Stranding is weird but strangely compelling to play.', '2024-02-22'),
+(18, 36, 5, 'Apex Legends has the smoothest movement in any battle royale.', '2023-09-15'),
+(19, 37, 4, 'League of Legends is competitive and rewarding but can be toxic.', '2023-11-30'),
+(20, 38, 5, 'World of Warcraft still reigns supreme in the MMO genre.', '2024-01-08'),
+(21, 39, 5, 'Hollow Knight is a masterclass in atmospheric game design.', '2023-12-14'),
+(22, 40, 4, 'Bastion has gorgeous art and an unforgettable narrator.', '2024-02-18'),
+(23, 41, 5, 'Horizon Zero Dawn combines stunning visuals with great gameplay.', '2023-08-25'),
+(24, 42, 5, 'Red Dead Redemption 2 is the most immersive open world ever made.', '2024-03-10'),
+(25, 43, 5, 'The Witcher 3 sets the gold standard for RPG storytelling.', '2023-10-05'),
+(26, 44, 4, 'Valorant mixes tactical gameplay with fun character abilities.', '2024-01-22'),
+(27, 45, 4, 'Splatoon 3 is colorful, fun, and incredibly addictive to play.', '2023-11-18'),
+(28, 46, 5, 'Street Fighter 6 brings fresh life to the fighting game genre.', '2024-02-25'),
+(29, 47, 5, 'It Takes Two is the best co-op game I have ever experienced.', '2023-09-20'),
+(30, 48, 3, 'Rust is brutal and unforgiving but rewarding when you succeed.', '2024-03-05');
 
--- AWARDS
+-- AWARDS (30)
 INSERT INTO awards (award_name, date_awarded, awarded_by, game_id) VALUES
 ('Game of the Year', '2020-12-15', 'Game Awards', 1),   -- The Last of Us Part II
 ('Best Narrative', '2020-12-15', 'Game Awards', 1),
@@ -263,4 +397,18 @@ INSERT INTO awards (award_name, date_awarded, awarded_by, game_id) VALUES
 ('Best Fighting Game', '2018-12-20', 'Game Awards', 30), -- Super Smash Bros Ultimate
 ('Best Design', '2022-11-25', 'IGN Awards', 21),       -- God of War Ragnarök
 ('Game of the Year', '2016-12-10', 'Game Awards', 28),  -- Dark Souls III
-('Best Platformer', '2015-12-15', 'Game Awards', 18);   -- Rocket League
+('Best Platformer', '2015-12-15', 'Game Awards', 18),  -- Rocket League
+('Best Action Game', '2020-12-15', 'Game Awards', 16),
+('Best Ongoing Game', '2023-12-07', 'Game Awards', 32),
+('Best Co-op Game', '2021-12-09', 'Game Awards', 47),
+('Best Fighting Game', '2023-12-07', 'Game Awards', 46),
+('Best Action RPG', '2021-12-09', 'Game Awards', 34),
+('Best Indie Game', '2017-12-07', 'Game Awards', 39),
+('Best Music', '2011-12-10', 'Game Awards', 40),
+('Best Visual Design', '2017-12-07', 'IGN Awards', 41),
+('Best Narrative', '2018-12-06', 'Game Awards', 42),
+('Best RPG', '2015-12-03', 'Game Awards', 43),
+('Best Esports Game', '2020-12-10', 'Game Awards', 37),
+('Best Community Support', '2022-12-08', 'Game Awards', 13),
+('Best Performance', '2022-12-08', 'Game Awards', 22),
+('Best Direction', '2019-12-12', 'Game Awards', 35);
